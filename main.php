@@ -22,8 +22,26 @@ class Cow extends Animal
 
 class Farm
 {
-    public function products($countChicken, $countCow)
+    public $chicken;
+    public $cow;
+
+    public function setAnimals($countChicken, $countCow)
     {
+        $chicken = $countChicken;
+        $cow = $countCow;
+
+        $data = [
+            'chicken' => $chicken,
+            'cow' => $cow,
+        ];
+        return $data;
+    }
+
+    public function products($animals)
+    {
+        $countChicken = $animals['chicken'];
+        $countCow = $animals['cow'];
+
         $countEggs = $this->getEggs($countChicken);
         $countMilk = $this->getMilk($countCow);
 
@@ -56,7 +74,7 @@ class Farm
 }
 
     $farm = new Farm();
-    $data = $farm->products(20, 10);
+    $animals = $farm->setAnimals(20, 10);
+    $data = $farm->products($animals);
 
-
-echo "Собрано с 20 кур и 10 коров: {$data['countEggs']} яиц и {$data['countMilk']} литров молока";
+echo "Собрано с {$animals['chicken']} кур и {$animals['cow']} коров: {$data['countEggs']} яиц и {$data['countMilk']} литров молока";
