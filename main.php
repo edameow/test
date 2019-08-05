@@ -22,9 +22,6 @@ class Cow extends Animal
 
 class Farm
 {
-    public $chicken;
-    public $cow;
-
     public function setAnimals($countChicken, $countCow)
     {
         $chicken = $countChicken;
